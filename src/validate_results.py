@@ -16,7 +16,7 @@ def main() -> None:
     assert len(data["monthly"]) == 24
     assert len(data["weekday"]) == 14
     assert len(data["hourly"]) == 48
-    for section in ("weekday", "hourly"):
+    for section in ("monthly", "weekday", "hourly"):
         for rider_type, expected in totals.items():
             observed = sum(row["trips"] for row in data[section] if row["user_type"] == rider_type)
             assert observed == expected, f"{section} total mismatch for {rider_type}"
